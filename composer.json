@@ -1,0 +1,48 @@
+{
+    "name": "ratmd/easybill-plugin",
+    "type": "october-plugin",
+    "version": "0.1.0",
+    "description": "Integrate your OFFLINE.Mall OctoberCMS WebShop with your easybill.de invoicing software.",
+    "keywords": [
+        "october", 
+        "octobercms", 
+        "mall",
+        "shop",
+        "easybill"
+    ],
+    "homepage": "https://octobercms.com/plugin/ratmd-easybill",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam",
+            "email": "sam@rat.md",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "info@rat.md",
+        "issues": "https://www.github.com/RatMD/easybill-plugin/issues",
+        "source": "https://www.github.com/RatMD/easybill-plugin"
+    },
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://buymeacoff.ee/ratmd"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">= 8.0",
+        "composer/installers": "~1.0",
+        "easybill/php-sdk": "^3.3",
+        "offline/oc-mall-plugin": "^3.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

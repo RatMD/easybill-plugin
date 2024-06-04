@@ -1,0 +1,14 @@
+fields:
+    api_key:
+        type: text
+        label: ratmd.easybill::lang.admin.api_key_label
+        comment: ratmd.easybill::lang.admin.api_key_comment
+        span: full
+    request_limit:
+        type: number
+        label: ratmd.easybill::lang.admin.request_limit_label
+        comment: ratmd.easybill::lang.admin.request_limit_comment
+        default: 10
+        min: 1
+        max: 60
+        span: left
