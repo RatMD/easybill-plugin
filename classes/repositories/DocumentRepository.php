@@ -3,12 +3,13 @@
 namespace RatMD\EasyBill\Classes\Repositories;
 
 use OFFLINE\Mall\Models\Order;
-use RatMD\EasyBill\Classes\Contracts\EasyBillRepository;
+use RatMD\EasyBill\Classes\Concerns\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Repository;
 use RatMD\EasyBill\Classes\Models\Document;
 use RatMD\EasyBill\Classes\Models\DocumentPosition;
 use RatMD\EasyBill\Classes\Models\ServiceDate;
 
-class DocumentRepository extends EasyBillRepository
+class DocumentRepository extends Repository
 {
 
     /**
@@ -79,9 +80,9 @@ class DocumentRepository extends EasyBillRepository
      * @param array $filters
      * @return array
      */
-    public function list(int $limit = 100, int $page = 1, $filters = [])
+    public function list(int $limit = 100, int $page = 1, $filters = []): array
     {
-        $result = $this->client->request('GET', self::PATH);
+        return $this->client->request('GET', self::PATH);
     }
 
     /**
@@ -90,10 +91,9 @@ class DocumentRepository extends EasyBillRepository
      * @return Document|null
      * @throws \Exception
      */
-    public function get(int $id)
+    public function get(int $id): Document
     {
         $result = $this->client->request('GET', self::PATH . '/' . $id);
-        dd($result);
         $document = new Document;
         $document->fill($result);
         return $document;
@@ -105,7 +105,7 @@ class DocumentRepository extends EasyBillRepository
      * @return Document
      * @throws \Exception
      */
-    public function create(Document $document): Document
+    public function create(EasyBillModel $document): Document
     {
         $result = $this->client->request('POST', self::PATH, $document->toArray());
         $document->fill($result);
@@ -119,7 +119,7 @@ class DocumentRepository extends EasyBillRepository
      * @return Document
      * @throws \Exception
      */
-    public function update(int $id, Document $document): Document
+    public function update(int $id, EasyBillModel $document): Document
     {
         $result = $this->client->request('PUT', self::PATH . '/' . $id, $document->toArray());
         $document->fill($result);
@@ -132,7 +132,7 @@ class DocumentRepository extends EasyBillRepository
      * @return bool
      * @throws \Exception
      */
-    public function delete(int $id)
+    public function delete(int $id): bool
     {
         $this->client->request('DELETE', self::PATH . '/' . $id);
         return true;

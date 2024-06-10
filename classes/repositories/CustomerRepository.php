@@ -4,11 +4,12 @@ namespace RatMD\EasyBill\Classes\Repositories;
 
 use GuzzleHttp\Exception\RequestException;
 use OFFLINE\Mall\Models\Customer as MallCustomer;
-use RatMD\EasyBill\Classes\Contracts\EasyBillRepository;
+use RatMD\EasyBill\Classes\Concerns\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Repository;
 use RatMD\EasyBill\Classes\Exceptions\InvalidException;
 use RatMD\EasyBill\Classes\Models\Customer;
 
-class CustomerRepository extends EasyBillRepository
+class CustomerRepository extends Repository
 {
 
     /**
@@ -105,7 +106,7 @@ class CustomerRepository extends EasyBillRepository
      * @return Customer|null
      * @throws \Exception
      */
-    public function get(int $id)
+    public function get(int $id): Customer
     {
         $result = $this->client->request('GET', self::PATH . '/' . $id);
         $customer = new Customer;
@@ -119,7 +120,7 @@ class CustomerRepository extends EasyBillRepository
      * @return Customer
      * @throws \Exception
      */
-    public function create(Customer $customer): Customer
+    public function create(EasyBillModel $customer): Customer
     {
         $result = $this->client->request('POST', self::PATH, $customer->toArray());
         $customer->fill($result);
@@ -133,7 +134,7 @@ class CustomerRepository extends EasyBillRepository
      * @return Customer
      * @throws \Exception
      */
-    public function update(int $id, Customer $customer): Customer
+    public function update(int $id, EasyBillModel $customer): Customer
     {
         $result = $this->client->request('PUT', self::PATH . '/' . $id, $customer->toArray());
         $customer->fill($result);
@@ -146,7 +147,7 @@ class CustomerRepository extends EasyBillRepository
      * @return bool
      * @throws \Exception
      */
-    public function delete(int $id)
+    public function delete(int $id): bool
     {
         $this->client->request('DELETE', self::PATH . '/' . $id);
         return true;

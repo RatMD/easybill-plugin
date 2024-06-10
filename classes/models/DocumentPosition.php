@@ -2,12 +2,12 @@
 
 namespace RatMD\EasyBill\Classes\Models;
 
-use RatMD\EasyBill\Classes\Contracts\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Model;
 
 /**
  * The DocumentPosition Model
  */
-class DocumentPosition extends EasyBillModel
+class DocumentPosition extends Model
 {
 
     /**

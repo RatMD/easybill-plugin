@@ -2,13 +2,13 @@
 
 namespace RatMD\EasyBill\Classes\Models;
 
-use RatMD\EasyBill\Classes\Contracts\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Model;
 
 /**
  * The DocumentRecurring Model
  * This object is only available in document type RECURRING.
  */
-class DocumentRecurring extends EasyBillModel
+class DocumentRecurring extends Model
 {
 
     /**

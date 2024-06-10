@@ -2,10 +2,11 @@
 
 namespace RatMD\EasyBill\Classes\Repositories;
 
-use RatMD\EasyBill\Classes\Contracts\EasyBillRepository;
+use RatMD\EasyBill\Classes\Concerns\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Repository;
 use RatMD\EasyBill\Classes\Models\CustomerGroup;
 
-class CustomerGroupRepository extends EasyBillRepository
+class CustomerGroupRepository extends Repository
 {
 
     /**
@@ -32,7 +33,7 @@ class CustomerGroupRepository extends EasyBillRepository
      * @return CustomerGroup|null
      * @throws \Exception
      */
-    public function get(int $id)
+    public function get(int $id): CustomerGroup
     {
         $result = $this->client->request('GET', self::PATH . '/' . $id);
         $customerGroup = new CustomerGroup;
@@ -46,7 +47,7 @@ class CustomerGroupRepository extends EasyBillRepository
      * @return CustomerGroup
      * @throws \Exception
      */
-    public function create(CustomerGroup $customerGroup): CustomerGroup
+    public function create(EasyBillModel $customerGroup): CustomerGroup
     {
         $result = $this->client->request('POST', self::PATH, $customerGroup->toArray());
         $customerGroup->fill($result);
@@ -60,7 +61,7 @@ class CustomerGroupRepository extends EasyBillRepository
      * @return CustomerGroup
      * @throws \Exception
      */
-    public function update(int $id, CustomerGroup $customerGroup): CustomerGroup
+    public function update(int $id, EasyBillModel $customerGroup): CustomerGroup
     {
         $result = $this->client->request('PUT', self::PATH . '/' . $id, $customerGroup->toArray());
         $customerGroup->fill($result);
@@ -73,7 +74,7 @@ class CustomerGroupRepository extends EasyBillRepository
      * @return bool
      * @throws \Exception
      */
-    public function delete(int $id)
+    public function delete(int $id): bool
     {
         $this->client->request('DELETE', self::PATH . '/' . $id);
         return true;

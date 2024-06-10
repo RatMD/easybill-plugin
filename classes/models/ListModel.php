@@ -2,12 +2,12 @@
 
 namespace RatMD\EasyBill\Classes\Models;
 
-use RatMD\EasyBill\Classes\Contracts\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Model;
 
 /**
  * The List Model
  */
-class ListModel extends EasyBillModel
+class ListModel extends Model
 {
     
     /**

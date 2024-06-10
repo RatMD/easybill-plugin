@@ -2,12 +2,12 @@
 
 namespace RatMD\EasyBill\Classes\Models;
 
-use RatMD\EasyBill\Classes\Contracts\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Model;
 
 /**
  * The FileFormatConfig Model
  */
-class FileFormatConfig extends EasyBillModel
+class FileFormatConfig extends Model
 {
     
     /**

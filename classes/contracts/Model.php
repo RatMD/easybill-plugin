@@ -5,13 +5,13 @@ namespace RatMD\EasyBill\Classes\Contracts;
 use ArrayAccess;
 use Exception;
 use ReflectionProperty;
+use RatMD\EasyBill\Classes\Concerns\EasyBillModel;
 
-abstract class EasyBillModel implements ArrayAccess
+abstract class Model implements ArrayAccess, EasyBillModel
 {
 
     /**
      * Create a new Document
-     *
      * @param array|null $data
      */
     public function __construct(?array $data = null)
@@ -23,11 +23,10 @@ abstract class EasyBillModel implements ArrayAccess
 
     /**
      * Fill Collection Model.
-     *
      * @param array $data
      * @return void
      */
-    public function fill(array $data)
+    public function fill(array $data): void
     {
         foreach ($data AS $key => $value) {
             if (!property_exists($this, $key)) {
@@ -55,7 +54,6 @@ abstract class EasyBillModel implements ArrayAccess
 
     /**
      * Return array representation of this class.
-     *
      * @return array
      */
     public function toArray() 
@@ -80,7 +78,6 @@ abstract class EasyBillModel implements ArrayAccess
 
     /**
      * ArrayAccess set handler.
-     *
      * @param string $offset
      * @param mixed $value
      * @return void
@@ -92,7 +89,6 @@ abstract class EasyBillModel implements ArrayAccess
 
     /**
      * ArrayAccess exists handler.
-     *
      * @param string $offset
      * @return boolean
      */
@@ -102,7 +98,6 @@ abstract class EasyBillModel implements ArrayAccess
 
     /**
      * ArrayAccess unset handler.
-     *
      * @param string $offset
      * @return void
      */
@@ -112,7 +107,6 @@ abstract class EasyBillModel implements ArrayAccess
 
     /**
      * ArrayAccess get handler.
-     *
      * @param string $offset
      * @return mixed
      */

@@ -2,13 +2,13 @@
 
 namespace RatMD\EasyBill\Classes\Models;
 
-use RatMD\EasyBill\Classes\Contracts\EasyBillModel;
+use RatMD\EasyBill\Classes\Contracts\Model;
 
 /**
  * The ServiceDate Model
  * This object is only available in document type INVOICE or CREDIT.
  */
-class ServiceDate extends EasyBillModel
+class ServiceDate extends Model
 {
 
     /**
