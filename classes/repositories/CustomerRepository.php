@@ -89,11 +89,7 @@ class CustomerRepository extends Repository
     }
 
     /**
-     * List Customers.
-     * @param int $limit
-     * @param int $page
-     * @param array $filters
-     * @return array
+     * @inheritDoc
      */
     public function list(int $limit = 100, int $page = 1, $filters = []): array
     {
@@ -101,10 +97,7 @@ class CustomerRepository extends Repository
     }
 
     /**
-     * Return a specific Customer.
-     * @param integer $id
-     * @return Customer|null
-     * @throws \Exception
+     * @inheritDoc
      */
     public function get(int $id): Customer
     {
@@ -115,10 +108,7 @@ class CustomerRepository extends Repository
     }
 
     /**
-     * Create a new Customer.
-     * @param Customer $customer
-     * @return Customer
-     * @throws \Exception
+     * @inheritDoc
      */
     public function create(EasyBillModel $customer): Customer
     {
@@ -128,11 +118,7 @@ class CustomerRepository extends Repository
     }
 
     /**
-     * Update an existing customer.
-     * @param integer $id
-     * @param Customer $customer
-     * @return Customer
-     * @throws \Exception
+     * @inheritDoc
      */
     public function update(int $id, EasyBillModel $customer): Customer
     {
@@ -142,10 +128,7 @@ class CustomerRepository extends Repository
     }
 
     /**
-     * Delete an existing customer.
-     * @param integer $id
-     * @return bool
-     * @throws \Exception
+     * @inheritDoc
      */
     public function delete(int $id): bool
     {

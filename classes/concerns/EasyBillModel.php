@@ -12,4 +12,11 @@ interface EasyBillModel
      */
     public function fill(array $data): void;
     
+
+    /**
+     * Return array representation of this class.
+     * @return array
+     */
+    public function toArray(): array;
+        
 }

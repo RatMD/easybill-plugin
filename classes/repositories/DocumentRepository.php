@@ -74,11 +74,7 @@ class DocumentRepository extends Repository
     }
 
     /**
-     * List Documents.
-     * @param int $limit
-     * @param int $page
-     * @param array $filters
-     * @return array
+     * @inheritDoc
      */
     public function list(int $limit = 100, int $page = 1, $filters = []): array
     {
@@ -86,10 +82,7 @@ class DocumentRepository extends Repository
     }
 
     /**
-     * Return a specific Document.
-     * @param integer $id
-     * @return Document|null
-     * @throws \Exception
+     * @inheritDoc
      */
     public function get(int $id): Document
     {
@@ -100,10 +93,7 @@ class DocumentRepository extends Repository
     }
 
     /**
-     * Create a new document.
-     * @param Document $document
-     * @return Document
-     * @throws \Exception
+     * @inheritDoc
      */
     public function create(EasyBillModel $document): Document
     {
@@ -113,11 +103,7 @@ class DocumentRepository extends Repository
     }
 
     /**
-     * Update an existing document.
-     * @param integer $id
-     * @param Document $document
-     * @return Document
-     * @throws \Exception
+     * @inheritDoc
      */
     public function update(int $id, EasyBillModel $document): Document
     {
@@ -127,10 +113,7 @@ class DocumentRepository extends Repository
     }
 
     /**
-     * Delete an existing documents.
-     * @param integer $id
-     * @return bool
-     * @throws \Exception
+     * @inheritDoc
      */
     public function delete(int $id): bool
     {

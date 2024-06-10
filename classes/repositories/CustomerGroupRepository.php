@@ -16,11 +16,7 @@ class CustomerGroupRepository extends Repository
     public const PATH = 'customer-groups';
 
     /**
-     * List Customer Groups
-     * @param int $limit
-     * @param int $page
-     * @param array $filters
-     * @return array
+     * @inheritDoc
      */
     public function list(int $limit = 100, int $page = 1, $filters = []): array
     {
@@ -28,10 +24,7 @@ class CustomerGroupRepository extends Repository
     }
 
     /**
-     * Return a specific CustomerGroup.
-     * @param integer $id
-     * @return CustomerGroup|null
-     * @throws \Exception
+     * @inheritDoc
      */
     public function get(int $id): CustomerGroup
     {
@@ -42,10 +35,7 @@ class CustomerGroupRepository extends Repository
     }
 
     /**
-     * Create a new CustomerGroup.
-     * @param CustomerGroup $customerGroup
-     * @return CustomerGroup
-     * @throws \Exception
+     * @inheritDoc
      */
     public function create(EasyBillModel $customerGroup): CustomerGroup
     {
@@ -55,11 +45,7 @@ class CustomerGroupRepository extends Repository
     }
 
     /**
-     * Update an existing CustomerGroup.
-     * @param integer $id
-     * @param CustomerGroup $customerGroup
-     * @return CustomerGroup
-     * @throws \Exception
+     * @inheritDoc
      */
     public function update(int $id, EasyBillModel $customerGroup): CustomerGroup
     {
@@ -69,10 +55,7 @@ class CustomerGroupRepository extends Repository
     }
 
     /**
-     * Delete an existing CustomerGroup.
-     * @param integer $id
-     * @return bool
-     * @throws \Exception
+     * @inheritDoc
      */
     public function delete(int $id): bool
     {

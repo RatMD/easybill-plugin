@@ -56,7 +56,7 @@ abstract class Model implements ArrayAccess, EasyBillModel
      * Return array representation of this class.
      * @return array
      */
-    public function toArray() 
+    public function toArray(): array
     {
         $toArray = function($val) {
             return is_a($val, EasyBillModel::class) ? $val->toArray() : $val;
