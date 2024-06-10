@@ -1,2 +1,5 @@
 v0.1.0: 
     - "Initial release of the RatMD.EasyBill extension."
+    - 001_01_alter_offline_mall_customers_table.php
+    - 001_02_alter_offline_mall_addresses_table.php
+    - 001_03_alter_offline_mall_orders_table.php

@@ -2,8 +2,12 @@
 
 namespace RatMD\EasyBill;
 
-use easybill\SDK\Client as SDKClient;
 use easybill\SDK\Endpoint;
+use OFFLINE\Mall\Models\Customer;
+use OFFLINE\Mall\Models\Order;
+use RatMD\EasyBill\Classes\Client;
+use RatMD\EasyBill\Classes\Repositories\CustomerRepository;
+use RatMD\EasyBill\Classes\Repositories\DocumentRepository;
 use RatMD\EasyBill\Models\Settings;
 use System\Classes\PluginBase;
 
@@ -35,7 +39,17 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        
+        $this->app->singleton(Client::class, function () {
+            return new Client(new Endpoint(
+                Settings::get('api_key')
+            ));
+        });
+        $this->app->singleton(CustomerRepository::class, function () {
+            return new CustomerRepository($this->app->make(Client::class));
+        });
+        $this->app->singleton(DocumentRepository::class, function () {
+            return new DocumentRepository($this->app->make(Client::class));
+        });
     }
 
     /**
