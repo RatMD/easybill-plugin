@@ -9,6 +9,12 @@ use RatMD\EasyBill\Classes\Contracts\Model;
  */
 class DocumentPosition extends Model
 {
+    
+    /**
+     * Unique Model ID.
+     * @var integer|null
+     */
+    public ?int $id = null;
 
     /**
      * The position number of this item.
@@ -177,11 +183,5 @@ class DocumentPosition extends Model
      * @var string|null
      */
     public ?string $itemType = null;
-    
-    /**
-     * The unique item id.
-     * @var integer|null
-     */
-    public ?int $id = null;
     
 }

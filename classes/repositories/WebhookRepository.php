@@ -6,7 +6,7 @@ use RatMD\EasyBill\Classes\Concerns\EasyBillModel;
 use RatMD\EasyBill\Classes\Contracts\Model;
 use RatMD\EasyBill\Classes\Contracts\Repository;
 
-class StockRepository extends Repository
+class WebhookRepository extends Repository
 {
 
     /**

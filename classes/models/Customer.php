@@ -2,6 +2,7 @@
 
 namespace RatMD\EasyBill\Classes\Models;
 
+use RatMD\EasyBill\Classes\Contracts\ListModel;
 use RatMD\EasyBill\Classes\Contracts\Model;
 
 /**
@@ -9,6 +10,12 @@ use RatMD\EasyBill\Classes\Contracts\Model;
  */
 class Customer extends Model
 {
+
+    /**
+     * Unique Model ID.
+     * @var int|null
+     */
+    public ?int $id = null;
 
     /**
      * The acquire option as integer id.
@@ -258,12 +265,6 @@ class Customer extends Model
      * @var integer|null
      */
     public ?int $group_id = null;
-
-    /**
-     * The id of this customer.
-     * @var int|null
-     */
-    public ?int $id = null;
 
     /**
      * The first additional info data of this customer.

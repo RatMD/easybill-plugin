@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace RatMD\EasyBill\Classes\Models;
+namespace RatMD\EasyBill\Classes\Contracts;
 
-use RatMD\EasyBill\Classes\Contracts\Model;
+use RatMD\EasyBill\Classes\Concerns\EasyBillModel;
 
 /**
  * The List Model
  */
-class ListModel extends Model
+abstract class ListModel extends Model
 {
     
     /**
@@ -33,5 +33,11 @@ class ListModel extends Model
      * @var integer|null
      */
     public ?int $total;
+
+    /**
+     * Available Items
+     * @var EasyBillModel[]
+     */
+    public array $items = [];
 
 }

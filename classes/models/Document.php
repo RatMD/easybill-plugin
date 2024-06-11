@@ -11,6 +11,12 @@ class Document extends Model
 {
 
     /**
+     * Unique Model ID.
+     * @var integer|null
+     */
+    public ?int $id = null;
+
+    /**
      * Document Address
      * @var DocumentAddress|null
      */
@@ -177,13 +183,6 @@ class Document extends Model
      * @var integer|null
      */
     public ?int $due_in_days = null;
-
-    /**
-     * The unique ID of this document.
-     * @var integer|null
-     */
-    public ?int $id = null;
-
     /**
      * Indicates if a document can be accepted by the end customer through the document's public access page.
      * @var boolean|null
