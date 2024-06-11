@@ -1,12 +1,12 @@
 OctoberCMS / RatMD.EasyBill for Offline.Mall
 ============================================
 
+> [!NOTE]
+> _This Plugin uses the official easybill PHP SDK, but is neither associated with nor developed by easybill.de._
+
 The **RatMD.EasyBill** OctoberCMS extensions allows to integrate your [easybill.de](https://www.easybill.de) 
 customers and invoice-handling with your [OFFLINE.Mall](https://octobercms.com/plugin/offline-mall) 
 OctoberCMS Store.
-
-> [!NOTE]
-> _This Plugin uses the official easybill PHP SDK, but is neither associated with nor developed by easybill.de._
 
 ## Requirements
 - PHP 8.1+

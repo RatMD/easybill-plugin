@@ -36,7 +36,10 @@
         "php": ">= 8.0",
         "composer/installers": "~1.0",
         "easybill/php-sdk": "^3.3",
-        "offline/oc-mall-plugin": "^3.3"
+        "offline/oc-mall-plugin": "^3.3",
+        "rainlab/location-plugin": "^1.2|^2.0",
+        "rainlab/user-plugin": "^2.0|^3.0",
+        "rainlab/userplus-plugin": "^1.0|^2.0"
     },
     "config": {
         "optimize-autoloader": true,
