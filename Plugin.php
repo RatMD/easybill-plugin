@@ -3,8 +3,6 @@
 namespace RatMD\EasyBill;
 
 use easybill\SDK\Endpoint;
-use OFFLINE\Mall\Models\Customer;
-use OFFLINE\Mall\Models\Order;
 use RatMD\EasyBill\Classes\Client;
 use RatMD\EasyBill\Classes\Repositories\AttachmentRepository;
 use RatMD\EasyBill\Classes\Repositories\ContactRepository;
@@ -37,6 +35,16 @@ use System\Classes\PluginBase;
  */
 class Plugin extends PluginBase
 {
+
+    /**
+     * Required plugin dependencies.
+     * @var array
+     */
+    public $require = [
+        "RainLab.User",
+        "RainLab.UserPlus",
+        "OFFLINE.Mall"
+    ];
 
     /**
      * Provide some basic details about this plugin.
