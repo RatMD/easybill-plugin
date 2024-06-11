@@ -3,6 +3,11 @@
 namespace RatMD\EasyBill;
 
 use easybill\SDK\Endpoint;
+use Event;
+use OFFLINE\Mall\Models\Cart;
+use OFFLINE\Mall\Models\Order;
+use OFFLINE\Mall\Models\OrderState;
+use RainLab\User\Models\User;
 use RatMD\EasyBill\Classes\Client;
 use RatMD\EasyBill\Classes\Repositories\AttachmentRepository;
 use RatMD\EasyBill\Classes\Repositories\ContactRepository;
@@ -100,7 +105,9 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        
+        Event::listen('mall.order.afterCreate', [$this, 'onOrderCreated']);
+        Event::listen('mall.order.state.changed', [$this, 'onOrderStateChanged']);
+        Event::listen('mall.customer.afterSignup', [$this, 'onCustomerSignUp']);
     }
 
     /**
@@ -120,6 +127,74 @@ class Plugin extends PluginBase
                 'keywords'      => 'offline mall easybill invoice invoicing'
             ]
         ];
+    }
+
+    /**
+     * An Mall order has been created.
+     * @param Order $order
+     * @param Cart $cart
+     * @return void
+     */
+    public function onOrderCreated(Order $order, Cart $cart)
+    {
+        /** @var CustomerRepository */
+        $customerRepository = $this->app->make(CustomerRepository::class);
+        /** @var DocumentRepository */
+        $documentRepository = $this->app->make(DocumentRepository::class);
+
+        // Create easybill Customer
+        $customerRepository->convertFromCustomer($order->customer->first());
+
+        // Create invoice
+        $documentRepository->createFromOrder($order);
+    }
+
+    /**
+     * An Mall order state has been changed.
+     * @param Order $order
+     * @return void
+     */
+    public function onOrderStateChanged(Order $order)
+    {
+        if (empty($order->ratmd_easybill_invoice_document_id)) {
+            return;
+        }
+
+        /** @var DocumentRepository */
+        $documentRepository = $this->app->make(DocumentRepository::class);
+
+        // Fetch Document
+        $document = null;
+        try {
+            $document = $documentRepository->get($order->ratmd_easybill_invoice_document_id);
+        } catch (\Exception $exc) {
+            if ($exc->getCode() != 404) {
+                throw $exc;
+            } else {
+                $order->ratmd_easybill_invoice_document_id = null;
+                $order->save();
+            }
+        }
+
+        // Update Document
+        if ($order->order_state->flag === OrderState::FLAG_CANCELLED) {
+            $document->status = 'CANCEL';
+        } else if ($order->order_state->flag === OrderState::FLAG_COMPLETE) {
+            $document->status = 'DONE';
+        } else {
+            $document->status = 'ACCEPT';
+        }
+        $documentRepository->update($document->id, $document);
+    }
+
+    /**
+     * A new customer has been created.
+     * @param User $user
+     * @return void
+     */
+    public function onCustomerSignUp(User $user)
+    {
+
     }
 
 }

@@ -23,7 +23,7 @@ class CustomerRepository extends Repository
      * @param MallCustomer $model
      * @return Customer
      */
-    public function convertFromMall(MallCustomer $model)
+    public function convertFromCustomer(MallCustomer $model)
     {
         if (!empty($model->ratmd_easybill_id)) {
             try {
