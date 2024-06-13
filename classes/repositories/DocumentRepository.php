@@ -3,7 +3,6 @@
 namespace RatMD\EasyBill\Classes\Repositories;
 
 use OFFLINE\Mall\Models\Order;
-use OFFLINE\Mall\Models\OrderState;
 use RatMD\EasyBill\Classes\Concerns\EasyBillModel;
 use RatMD\EasyBill\Classes\Contracts\Repository;
 use RatMD\EasyBill\Classes\Models\Document;
