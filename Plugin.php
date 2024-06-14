@@ -4,7 +4,9 @@ namespace RatMD\EasyBill;
 
 use easybill\SDK\Endpoint;
 use Event;
+use OFFLINE\Mall\Models\Address;
 use OFFLINE\Mall\Models\Cart;
+use OFFLINE\Mall\Models\Customer;
 use OFFLINE\Mall\Models\Order;
 use OFFLINE\Mall\Models\OrderState;
 use RainLab\User\Models\User;
@@ -108,6 +110,37 @@ class Plugin extends PluginBase
         Event::listen('mall.order.afterCreate', [$this, 'onOrderCreated']);
         Event::listen('mall.order.state.changed', [$this, 'onOrderStateChanged']);
         Event::listen('mall.customer.afterSignup', [$this, 'onCustomerSignUp']);
+
+        // Extend Address Model
+        Address::extend(function (Address $model) {
+            $model->addFillable([
+                'ratmd_easybill_last_name',
+                'ratmd_easybill_first_name',
+                'ratmd_easybill_title',
+                'ratmd_easybill_salutation',
+            ]);
+        });
+
+        // Extend Customer Model
+        Customer::extend(function (Customer $model) {
+            $model->addFillable([
+                'ratmd_easybill_birth_date',
+                'ratmd_easybill_vat_id',
+                'ratmd_easybill_court_registry',
+                'ratmd_easybill_court',
+                'ratmd_easybill_tax_number',
+                'ratmd_easybill_tax_option',
+                'ratmd_easybill_customer_number',
+                'ratmd_easybill_id',
+            ]);
+        });
+
+        // Extend Order Model
+        Order::extend(function (Order $model) {
+            $model->addFillable([
+                'ratmd_easybill_invoice_document_id',
+            ]);
+        });
     }
 
     /**
